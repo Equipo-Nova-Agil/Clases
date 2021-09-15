@@ -1,7 +1,13 @@
 from Producto import Producto
 from Carro import Carro
 
+#########################################################################
+# Clase persona
+#########################################################################
 
+# La clase persona será la herramienta para considerar al usuario
+# Esta contendrá sus datos relevantes y métodos que ayuden a mejorar su experiencia
+# Cada persona tendrá un Carro
 class Persona:
 
     def __init__(self, nombre, genero, edad, telefono, direccion, ID, ):
@@ -12,6 +18,10 @@ class Persona:
         self.direccion = direccion
         self.ID = ID
         self.carro = Carro(ID, [], [])
+
+#########################################################################
+# Setters y Getters
+#########################################################################
 
     def getNombre(self):
         return self.nombre
@@ -56,13 +66,18 @@ class Persona:
         if (isinstance(n, Carro)):
             self.carro = n
 
-    def Saludar(self):
-        print(f'Hola mi gente soy {self.nombre}')
+#########################################################################
+# Métodos
+#########################################################################
 
+    # agregarCarro llama al método agregarProducto() desde su carro
     def agregarCarro(self, pn, q=1):
         if isinstance(pn, Producto) or isinstance(pn, list):
+            # usamos c para guardar el carro
             c = self.getCarro()
+            # llamamos el método agregando la cantidad y producto ingresados
             c.agregarProducto(pn, q)
+            # Actualizamos el carro
             self.setCarro(c)
 
     def removerCarro(self, pn, q=[1]):
