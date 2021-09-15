@@ -8,6 +8,10 @@ class Carro:
         self.Lproductos = Lproductos
         self.cantidades = Cantidad
 
+#########################################################################
+# Getters y Setters
+#########################################################################
+
     def getLproductos(self):
         return self.Lproductos
 
@@ -20,58 +24,87 @@ class Carro:
     def setCantidades(self, n):
         self.cantidades = n
 
+#########################################################################
+# Métodos
+#########################################################################
+
+    # agregarProducto() busca si el producto en cuestión
+    # existe, si existe suma la cantidad indicada
+    # si no existe se agrega al carro con su respectiva cantidad
     def agregarProducto(self, producto, cantidad=[1]):
+        # si la cantidad ingresada es un entero se eloja en una lista
         if isinstance(cantidad, int):
             cantidad = [cantidad]
-
+        # Guardamos la lista de productos en L con su método get
+        # Guardamos la lista de cantidades en C con su método get
         L = self.getLproductos()
         C = self.getCantidades()
+        # Len es la longitud de la lista de productos
         Len = len(L)
+        # Los productos se pueden agregar uno a uno o en listas
+        # Esta primera rama se sigue el caso cuando es un Producto
         if (isinstance(producto, Producto)):
+            # Como el identificador debe ser único, guardamos este en IDnp
             IDnp = producto.getID()
+            # creamos un iterador en 0
             it = 0
+            # Si la lista no está vacia se busca en ella el producto
+            # en caso contrario simplemente se agrega
             if (Len > 0):
                 for i in range(0, Len, 1):
+                    # cada que los ID sean diferentes se suma al iterador
                     if (IDnp != L[i].getID()):
                         it += 1
+                    # en caso contrario se suma la cantidad y se actualiza a C
                     else:
                         C[i] = C[i] + cantidad[0]
                         print(f'Se ha sumado {cantidad[0]} a {producto.getNombre()}')
                         self.setCantidades(C)
                         break
+                # Si el iterador llega a ser igual a Len se agregan y actualizan ambas listas
                 if (it == Len):
                     L.append(producto)
                     C.append(cantidad[0])
                     self.setLproductos(L)
                     self.setCantidades(C)
                     print(f'Se ha agregado {cantidad[0]} {producto.getNombre()} al carro')
+            # Cuando la lista esta vacía simplemente se agrega
             else:
                 L.append(producto)
                 C.append(cantidad[0])
                 self.setLproductos(L)
                 self.setCantidades(C)
                 print(f'Se ha agregado {cantidad[0]} {producto.getNombre()} al carro')
+        # En esta segunda rama se sigue el caso cuando es una lista de Productos
         else:
             if (isinstance(producto, list)):
+                # cuando es una lista, lo primero se comparar si la distancia es la misma
                 lenP = len(producto)
                 lenC = len(cantidad)
                 IDnp = ''
+                # en caso de que no lo sea, haremos que la distancia de las cantidades sea
+                # igual o mayor para que siempre esté dentro de los límites a iterar
                 if (lenP != lenC):
                     cantidad = cantidad * lenP
 
+                # primero para un i tan grande como la lista de productos a agregar
                 for i in range(0, lenP, 1):
                     IDnp = producto[i].getID()
                     it = 0
+                    # Si la lista de productos no está vacía
                     if (Len > 0):
+                        # Se compara con cada producto en la lista y se sigue el mismo iterador
                         for j in range(0, Len, 1):
                             if (IDnp != L[j].getID()):
                                 it += 1
+                            # Si se encuentra el ID se suma la cantidad indicada
                             else:
                                 C[j] = C[j] + cantidad[i]
                                 print(f'Se han sumado {cantidad[i]} a  {producto[i].getNombre()}')
                                 self.setCantidades(C)
                                 break
 
+                        # Si el iterador llega a ser igual a Len se agregan y actualizan ambas listas
                         if (it == Len):
                             L.append(producto[i])
                             C.append(cantidad[i])
@@ -79,6 +112,7 @@ class Carro:
                             self.setCantidades(C)
                             print(f'Se ha agregado {cantidad[i]} {producto[i].getNombre()} al carro')
 
+                    # Cuando la lista esta vacía simplemente se agrega
                     else:
                         L.append(producto[i])
                         C.append(cantidad[i])

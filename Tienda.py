@@ -12,6 +12,9 @@ class Tienda:
         self.caja = caja
         self.nomina = nomina
 
+#########################################################################
+# Getters y Setters
+#########################################################################
 
     def getInventario(self):
         return self.inventario
@@ -37,6 +40,9 @@ class Tienda:
     def setNomina(self, n):
         self.nomina = n
 
+#########################################################################
+# Métodos
+#########################################################################
 
     def agregarInventario(self, producto, cantidad = [1]):
         self.inventario.agregarProducto(producto, cantidad)
