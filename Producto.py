@@ -1,12 +1,23 @@
-
+#########################################################################
+# La clase producto se crea para poder organizar y apilar cada producto
+# con sus respectivos datos
+#########################################################################
 
 class Producto:
+
+#########################################################################
+# Atributos
+#########################################################################
 
     def __init__(self, nombre, precio, seccion, ID):
         self.nombre = nombre
         self.precio = precio
         self.seccion = seccion
         self.ID = ID
+
+#########################################################################
+# Getters y Setters
+#########################################################################
 
     def getNombre(self):
         return self.nombre
