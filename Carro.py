@@ -32,7 +32,7 @@ class Carro:
     # existe, si existe suma la cantidad indicada
     # si no existe se agrega al carro con su respectiva cantidad
     def agregarProducto(self, producto, cantidad=[1]):
-        # si la cantidad ingresada es un entero se eloja en una lista
+        # si la cantidad ingresada es un entero se aloja en una lista
         if isinstance(cantidad, int):
             cantidad = [cantidad]
         # Guardamos la lista de productos en L con su método get
@@ -120,20 +120,32 @@ class Carro:
                         self.setCantidades(C)
                         print(f'Se ha agregado {cantidad[i]} {producto[i].getNombre()} al carro')
 
+    # removerProducto busca y resta la cantidad indicada por el ID
     def removerProducto(self, producto, cantidad=1):
+
+        # si la cantidad ingresada es un entero se aloja en una lista
         if (isinstance(cantidad, int)):
             cantidad = [cantidad]
-
+        # Guardamos la lista de productos en L con su método get
+        # Guardamos la lista de cantidades en C con su método get
         L = self.getLproductos()
         C = self.getCantidades()
+        # Len es la longitud de la lista de productos
         Len = len(L)
         IDnp = 0
+        # si la lista esta vacía no ejecuta la busqueda
         if (Len > 0):
+            # Los productos se pueden remover uno a uno o en listas
+            # Esta primera rama se sigue el caso cuando es un Producto
             if (isinstance(producto, Producto)):
                 IDnp = producto.getID()
+                # se compara el ID del nuevo producto con todos en la lista
                 for i in range(0, Len, 1):
+                    # cuando son iguales resta  la cantidad indicada
                     if (IDnp == L[i].getID()):
                         C[i] = C[i] - cantidad[0]
+                        # si la cantidad llega a ser menor o igual a cero
+                        # remueve el producto de la lista
                         if (C[i] <= 0):
                             L.pop(i)
                             C.pop(i)
@@ -141,24 +153,30 @@ class Carro:
                             self.setCantidades(C)
                             print(f'Se ha removido {producto.getNombre()} del carro')
                             break
+                        # en caso de ser mayor que cero simplemente se actualiza la cantidad
                         else:
                             self.setCantidades(C)
                             print(f'Se han restado {cantidad[0]} de {producto[i].getNombre()}')
                             break
 
             else:
+                # El caso cuando se agrega una lista de Productos
                 if (isinstance(producto, list)):
+                    # primero se compara la longitud de ambas listas
                     lenP = len(producto)
                     lenC = len(cantidad)
                     IDnp = 0
 
+                    # en caso de que no lo sea, haremos que la distancia de las cantidades sea
+                    # igual o mayor para que siempre esté dentro de los límites a iterar
                     if (lenP != lenC):
                         cantidad = cantidad*lenP
-
+                    # Ci contendra la cantidad de turno en el ciclo
                     Ci = 0
                     for i in range(0, lenP, 1):
                         IDnp = producto[i].getID()
                         Ci = cantidad[i]
+                        # en cada pasada se deben modificar L y C, pues se pueden actualizar con remover
                         L = self.getLproductos()
                         C = self.getCantidades()
                         Len = len(L)
