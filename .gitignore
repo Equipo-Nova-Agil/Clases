@@ -1,1 +1,4 @@
-D:\Ciclo_3\Clases\venv
+#Ignoramos las siguientes carpetas
+/venv
+/.idea
+/__pycache__
