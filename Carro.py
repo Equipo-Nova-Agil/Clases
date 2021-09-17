@@ -156,7 +156,7 @@ class Carro:
                         # en caso de ser mayor que cero simplemente se actualiza la cantidad
                         else:
                             self.setCantidades(C)
-                            print(f'Se han restado {cantidad[0]} de {producto[i].getNombre()}')
+                            print(f'Se han restado {cantidad[0]} de {producto.getNombre()}')
                             break
 
             else:
@@ -195,7 +195,7 @@ class Carro:
 
                                     else:
                                         self.setCantidades(C)
-                                        print(f'Se han restado {cantidad[0]} de {producto[i].getNombre()}')
+                                        print(f'Se han restado {cantidad[i]} de {producto[i].getNombre()}')
                                         break
 
         else:
