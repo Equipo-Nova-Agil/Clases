@@ -71,13 +71,62 @@ Persona1.agregarCarro(productos, [1, 2, 4])
 Persona1.verCarro()
 
 print()
-print('Remover de a un producto')
-#Persona1.removerCarro(Producto1)
-#Persona1.verCarro()
+print('Remover un producto')
+Persona1.removerCarro(Producto1)
+Persona1.verCarro()
 
-c.agregarProducto(productos, [10])
-c.verProducto()
+print()
+print('Remover un producto con cantidad entera')
+Persona1.removerCarro(Producto1, 2)
+Persona1.verCarro()
 
-c.removerProducto(productos)
 
-c.verProducto()
+print()
+print('Remover un producto con cantidad en una lista')
+Persona1.removerCarro(Producto1, [3])
+Persona1.verCarro()
+
+
+print()
+print('Remover un todas las unidades de un producto')
+Persona1.removerCarro(Producto1, [7])
+Persona1.verCarro()
+
+print()
+print('Remover un todas las unidades de un producto')
+Persona1.removerCarro(Producto1, [7])
+Persona1.verCarro()
+
+
+print()
+print('Remover más de las unidades que hay de un producto')
+Persona1.removerCarro(Producto2, 10)
+Persona1.verCarro()
+
+print()
+print('Agregamos nuevamente papas y carne')
+Persona1.agregarCarro(productos, [10])
+Persona1.verCarro()
+
+
+print()
+print('Se remueve una lista')
+Persona1.removerCarro(productos)
+Persona1.verCarro()
+
+
+print()
+print('Se remueve una lista con cantidad entera')
+Persona1.removerCarro(productos, 3)
+Persona1.verCarro()
+
+print()
+print('Se remueve una lista con cantidad en una lista')
+Persona1.removerCarro(productos, [2])
+Persona1.verCarro()
+
+print()
+print('Se remueve una lista con cantidades diferentes en una lista')
+Persona1.removerCarro(productos, [3, 1, 9])
+Persona1.verCarro()
+
