@@ -1,3 +1,9 @@
+#Ignoramos las siguientes carpetas
+/venv
+/.idea
+/__pycache__
+
+
 # History files
 .Rhistory
 .Rapp.history
