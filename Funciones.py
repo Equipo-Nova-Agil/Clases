@@ -25,16 +25,15 @@ def crearPersona():
     it = 0
     if (Len > 0):
         for i in range(0, Len):
-            if (ID != usuarios_registrados[i].getID):
+            if ID != usuarios_registrados[i].getID:
                 it += 1
             else:
                 print('Ya se encuentra inscrito')
                 break
-        if (it == Len):
+        if it == Len:
             nuevo_usuario = Persona(nombre, genero, edad, telefono, direccion, ID)
             usuarios_registrados.append(nuevo_usuario)
             print('Se ha registrado correctamente')
-            return nuevo_usuario
     else:
         nuevo_usuario = Persona(nombre, genero, edad, telefono, direccion, ID)
         usuarios_registrados.append(nuevo_usuario)
