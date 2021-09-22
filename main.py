@@ -7,7 +7,6 @@ from Tienda import Tienda
 Persona1 = Persona('Luis', 'M', 27, 3154175450,'cll 70a #2c-28', '1143850138')
 
 
-
 n = Persona1.getNombre()
 e = Persona1.getEdad()
 d = Persona1.direccion
@@ -164,8 +163,10 @@ print(exists)
 print()
 print('Agregaremos más unidades al carro que las disponibles en inventario')
 Persona1.agregarCarro(Producto1, 100)
+Persona1.agregarCarro(Producto2, 100)
 Persona1.verCarro()
 
 print()
 print('Se prueba el metodo de consultar cantidades')
 super_market.consultarCantidad(Persona1.getCarro())
+
