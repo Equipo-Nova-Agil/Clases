@@ -59,6 +59,11 @@ class Tienda:
             self.setInventario(inventario)
 
 
+    def verInventario(self):
+        inventario = self.getInventario()
+        inventario.verProducto()
+
+
     def calcularCostoInventario(self):
         c = self.getInventario()
         c.costoTotal()
@@ -67,27 +72,67 @@ class Tienda:
     def consultarExistencia(self, carro):
         if isinstance(carro, Carro):
             L = carro.getLproductos()
-            C = carro.getCantidades()
             Len = len(L)
             LI = self.getInventario().getLproductos()
-            CI = self.getInventario().getCantidades()
             LenI = len(LI)
             existe = []
+            pos = []
             if Len > 0:
                 for i in range(0, Len):
+                    it = 0
                     for j in range(0, LenI):
-                        if (L[i].getID() == LI[j].getID()):
-                            if (CI[j] >= C[i]):
-                                existe.append(True)
-                                print()
+                        if (L[i].getID() != LI[j].getID()):
+                            it += 1
+                        else:
+                            existe.append(True)
+                            pos.append(j)
+                            break
+                    if it == LenI:
+                        existe.append(False)
+                        pos.append(-1)
+                return existe, pos
+            else:
+                print('El carro se encuentra vacío')
+        else:
+            print('El elemento ingresado no es valido')
 
 
+
+    def consultarCantidad(self, carro):
+        if isinstance(carro, Carro):
+            L = carro.getLproductos()
+            C = carro.getCantidades()
+            CI = self.getInventario().getCantidades()
+            C_disponible = []
+            pos = []
+            Len = len(L)
+            if Len > 0:
+                existe = self.consultarExistencia(carro)
+                for i in range(0, Len):
+                    if existe[0][i] == True:
+                        if C[i] > CI[existe[1][i]]:
+                            C_disponible.append(CI[existe[1][i]])
+                            pos.append(i)
+                Len_Cd = len(pos)
+                print('Los siguientes productos no cuentan con las cantidades solicitadas en inventario\n')
+                print('Producto', '\t', 'Cant_solicitada', '\t', 'Cant_disponible')
+                for i in range(0, Len_Cd):
+                    print(L[pos[i]].getNombre(), '\t', '\t', C[pos[i]], '\t', '\t', C_disponible[i])
+                print()
+                reemplazar = input('¿Desea reemplazar las cantidades indicadas? (Si o No): ')
+                if reemplazar == 'Si' or reemplazar == 'si' or reemplazar == 'SI':
+                    for i in range(0, Len_Cd):
+                        C[pos[i]] = C_disponible[i]
+                    self.getInventario().setCantidades(C)
+                    print('Se han actualizado correctamente las cantidades disponibles')
+                    self.verInventario()
 
 
             else:
                 print('El carro se encuentra vacío')
         else:
             print('El elemento ingresado no es valido')
+
 
 
     def vender(self, carro):
@@ -96,9 +141,11 @@ class Tienda:
             C = carro.getCantidades()
             Len = len(L)
             if Len > 0:
+                print('Toy chiquito, vuelve más tarde')
 
             else:
                 print('El carro se encuentra vacío')
 
         else:
             print('El elemento ingresado no es valido')
+
