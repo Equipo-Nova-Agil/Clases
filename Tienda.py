@@ -114,20 +114,20 @@ class Tienda:
                             C_disponible.append(CI[existe[1][i]])
                             pos.append(i)
                 Len_Cd = len(pos)
-                print('Los siguientes productos no cuentan con las cantidades solicitadas en inventario\n')
-                print('Producto', '\t', 'Cant_solicitada', '\t', 'Cant_disponible')
-                for i in range(0, Len_Cd):
-                    print(L[pos[i]].getNombre(), '\t', '\t', C[pos[i]], '\t', '\t', C_disponible[i])
-                print()
-                reemplazar = input('¿Desea reemplazar las cantidades indicadas? (Si o No): ')
-                if reemplazar == 'Si' or reemplazar == 'si' or reemplazar == 'SI':
+                if Len_Cd > 0:
+                    print('Los siguientes productos no cuentan con las cantidades solicitadas en inventario\n')
+                    print('Producto', '\t', 'Cant_solicitada', '\t', 'Cant_disponible')
                     for i in range(0, Len_Cd):
-                        C[pos[i]] = C_disponible[i]
-                    self.getInventario().setCantidades(C)
-                    print('Se han actualizado correctamente las cantidades disponibles')
-                    self.verInventario()
-
-
+                        print(L[pos[i]].getNombre(), '\t', '\t', C[pos[i]], '\t', '\t', C_disponible[i])
+                    print()
+                    reemplazar = input('¿Desea reemplazar las cantidades indicadas? (Si o No): ')
+                    if reemplazar == 'Si' or reemplazar == 'si' or reemplazar == 'SI':
+                        for i in range(0, Len_Cd):
+                            C[pos[i]] = C_disponible[i]
+                        carro.setCantidades(C)
+                        print('Se han actualizado correctamente las cantidades disponibles')
+                else:
+                    print('Todas las cantidades solicitadas se encuentran disponibles')
             else:
                 print('El carro se encuentra vacío')
         else:
