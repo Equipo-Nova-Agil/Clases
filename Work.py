@@ -5,6 +5,7 @@ from Funciones import *
 
 
 
+
 crearPersona()
 verPersonas(usuarios_registrados)
 

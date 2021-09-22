@@ -2,9 +2,9 @@
 from Persona import Persona
 from Producto import Producto
 from Carro import Carro
+from Tienda import Tienda
 
 Persona1 = Persona('Luis', 'M', 27, 3154175450,'cll 70a #2c-28', '1143850138')
-
 
 
 n = Persona1.getNombre()
@@ -138,3 +138,35 @@ print('Se remueve una lista con cantidades diferentes en una lista')
 Persona1.removerCarro(productos, [3, 1, 9])
 Persona1.verCarro()
 Persona1.costoTotalCarro()
+
+
+print()
+print('Se crea la tienda super_market')
+super_market = Tienda('super_market')
+super_market.agregarInventario(productos, 100)
+super_market.verInventario()
+
+
+print()
+print('Se prueba el metodo consultarExistencia')
+exists = super_market.consultarExistencia(Persona1.getCarro())
+print(exists)
+
+
+print()
+print('Se crea un nuevo producto a consultar existencia')
+Producto4 = Producto('Martillo', 25000, 'Ferreteria', 64)
+Persona1.agregarCarro(Producto4)
+exists = super_market.consultarExistencia(Persona1.getCarro())
+print(exists)
+
+print()
+print('Agregaremos más unidades al carro que las disponibles en inventario')
+Persona1.agregarCarro(Producto1, 100)
+Persona1.agregarCarro(Producto2, 100)
+Persona1.verCarro()
+
+print()
+print('Se prueba el metodo de consultar cantidades')
+super_market.consultarCantidad(Persona1.getCarro())
+
