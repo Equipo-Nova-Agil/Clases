@@ -17,7 +17,7 @@ class Persona:
         self.telefono = telefono
         self.direccion = direccion
         self.ID = ID
-        self.carro = Carro(ID, [], [])
+        self.carro = Carro([], [])
 
 #########################################################################
 # Setters y Getters
@@ -81,9 +81,19 @@ class Persona:
             self.setCarro(c)
 
     def removerCarro(self, pn, q=[1]):
-        self.carro.removerProducto(pn, q)
+        if isinstance(pn, Producto) or isinstance(pn, list):
+            # usamos c para guardar el carro
+            c = self.getCarro()
+            # llamamos la función remover con los productos y cantidades indicadas
+            c.removerProducto(pn, q)
+            # Actualizamos el carro
+            self.setCarro(c)
 
 
     def verCarro(self):
-        caro = self.getCarro()
-        caro.verProducto()
+        c = self.getCarro()
+        c.verProducto()
+
+    def costoTotalCarro(self):
+        c = self.getCarro()
+        c.costoTotal()

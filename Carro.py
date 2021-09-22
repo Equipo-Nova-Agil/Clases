@@ -3,10 +3,11 @@ from Producto import Producto
 
 class Carro:
 
-    def __init__(self, car_ID, Lproductos, Cantidad):
-        self.car_ID = car_ID
+    def __init__(self, Lproductos, Cantidad):
+
         self.Lproductos = Lproductos
         self.cantidades = Cantidad
+
 
 #########################################################################
 # Getters y Setters
@@ -213,4 +214,17 @@ class Carro:
         else:
             print('El carro se encuentra vacío')
 
+
+    def costoTotal(self):
+
+        L = self.getLproductos()
+        C = self.getCantidades()
+        Len = len(L)
+        total = 0
+        if (Len > 0):
+            for i in range(0, Len):
+                total += L[i].getPrecio()*C[i]
+            print(f'El costo actual del carro es: {total}')
+        else:
+            print('El carro se encuentra vacío')
 

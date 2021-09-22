@@ -13,7 +13,7 @@ d = Persona1.direccion
 
 print(f'Mi nombre es {n}, tengo {e} años y vivo en {d}')
 
-c = Carro(69, [], [])
+c = Carro([], [])
 
 print('Carro carrudo')
 c.verProducto()
@@ -30,103 +30,111 @@ productos.append(Producto3)
 
 print('Se prueba el carro dentro de los atributos de persona')
 Persona1.verCarro()
+Persona1.costoTotalCarro()
 
 print('Primeros productos')
 Persona1.agregarCarro(Producto1)
-
 Persona1.verCarro()
-
+Persona1.costoTotalCarro()
 
 print()
 print('Agregando 2 entero')
 Persona1.agregarCarro(Producto1, 2)
 Persona1.verCarro()
+Persona1.costoTotalCarro()
 
 print()
 print('Agregando 3 en una lista')
 Persona1.agregarCarro(Producto1, [3])
 Persona1.verCarro()
+Persona1.costoTotalCarro()
 
 print()
 print('Se agrega una lista sin cantidad')
 Persona1.agregarCarro(productos)
 Persona1.verCarro()
+Persona1.costoTotalCarro()
 
 print()
 print('Se agrega una lista con 2 entero')
 Persona1.agregarCarro(productos, 2)
 Persona1.verCarro()
-
+Persona1.costoTotalCarro()
 
 print()
 print('Se agrega una lista con 3 en una lista')
 Persona1.agregarCarro(productos, [3])
-
 Persona1.verCarro()
-
+Persona1.costoTotalCarro()
 
 print()
 print('Se agrega una lista con cantidades diferentes')
 Persona1.agregarCarro(productos, [1, 2, 4])
 Persona1.verCarro()
+Persona1.costoTotalCarro()
 
 print()
 print('Remover un producto')
 Persona1.removerCarro(Producto1)
 Persona1.verCarro()
+Persona1.costoTotalCarro()
 
 print()
 print('Remover un producto con cantidad entera')
 Persona1.removerCarro(Producto1, 2)
 Persona1.verCarro()
-
+Persona1.costoTotalCarro()
 
 print()
 print('Remover un producto con cantidad en una lista')
 Persona1.removerCarro(Producto1, [3])
 Persona1.verCarro()
-
-
-print()
-print('Remover un todas las unidades de un producto')
-Persona1.removerCarro(Producto1, [7])
-Persona1.verCarro()
+Persona1.costoTotalCarro()
 
 print()
 print('Remover un todas las unidades de un producto')
 Persona1.removerCarro(Producto1, [7])
 Persona1.verCarro()
+Persona1.costoTotalCarro()
 
+print()
+print('Remover un todas las unidades de un producto')
+Persona1.removerCarro(Producto1, [7])
+Persona1.verCarro()
+Persona1.costoTotalCarro()
 
 print()
 print('Remover más de las unidades que hay de un producto')
 Persona1.removerCarro(Producto2, 10)
 Persona1.verCarro()
+Persona1.costoTotalCarro()
 
 print()
 print('Agregamos nuevamente papas y carne')
 Persona1.agregarCarro(productos, [10])
 Persona1.verCarro()
-
+Persona1.costoTotalCarro()
 
 print()
 print('Se remueve una lista')
 Persona1.removerCarro(productos)
 Persona1.verCarro()
-
+Persona1.costoTotalCarro()
 
 print()
 print('Se remueve una lista con cantidad entera')
 Persona1.removerCarro(productos, 3)
 Persona1.verCarro()
+Persona1.costoTotalCarro()
 
 print()
 print('Se remueve una lista con cantidad en una lista')
 Persona1.removerCarro(productos, [2])
 Persona1.verCarro()
+Persona1.costoTotalCarro()
 
 print()
 print('Se remueve una lista con cantidades diferentes en una lista')
 Persona1.removerCarro(productos, [3, 1, 9])
 Persona1.verCarro()
-
+Persona1.costoTotalCarro()
