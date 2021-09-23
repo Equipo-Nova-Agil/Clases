@@ -6,16 +6,50 @@ from Carro import Carro
 class Tienda:
 
 
-    def __init__(self, nombre, caja = 0, nomina = []):
+    def __init__(self, nombre, direccion, telefono, correo, responsable, caja = 0, nomina = []):
         self.nombre = nombre
+        self.direccion = direccion
+        self.telefono = telefono
+        self.correo = correo
+        self.responsable = responsable
         self.inventario = Carro([], [])
-        #self.facturas = facturas
         self.caja = caja
         self.nomina = nomina
 
 #########################################################################
 # Getters y Setters
 #########################################################################
+
+    def getNombre(self):
+        return self.nombre
+
+    def setNombre(self, n):
+        self.nombre = n
+
+
+    def getDireccion(self):
+        return self.direccion
+
+    def setDireccion(self, n):
+        self.direccion = n
+
+    def getTelefono(self):
+        return self.telefono
+
+    def setTelefono(self, n):
+        self.telefono = n
+
+    def getCorreo(self):
+        return self.correo
+
+    def setCorreo(self, n):
+        self.correo = n
+
+    def getResponsable(self):
+        return self.responsable
+
+    def setResponsable(self, n):
+        self.responsable = n
 
     def getInventario(self):
         return self.inventario

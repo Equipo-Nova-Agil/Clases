@@ -4,7 +4,8 @@ from Producto import Producto
 from Carro import Carro
 from Tienda import Tienda
 
-Persona1 = Persona('Luis', 'M', 27, 3154175450,'cll 70a #2c-28', '1143850138')
+Persona1 = Persona('Luis', 'M', 'murillo.luis@correounivalle.edu.co', 'Cliente', 27,
+                   '3154175450', 'Cll 70a #2c-28', 'LuisMuri09')
 
 
 n = Persona1.getNombre()
@@ -18,9 +19,9 @@ c = Carro([], [])
 print('Carro carrudo')
 c.verProducto()
 
-Producto1 = Producto('Carne de res', 11000, 'Carnicería', 1)
-Producto2 = Producto('Papas', 3000, 'Verduras', 2)
-Producto3 = Producto('Pasta', 4700, 'Empacados', 3)
+Producto1 = Producto('Carne de res', 11000, 'Carnicería', 1, 'super_market')
+Producto2 = Producto('Papas', 3000, 'Verduras', 2, 'super_market')
+Producto3 = Producto('Pasta', 4700, 'Empacados', 3, 'super_market')
 
 productos = []
 
@@ -142,7 +143,9 @@ Persona1.costoTotalCarro()
 
 print()
 print('Se crea la tienda super_market')
-super_market = Tienda('super_market')
+super_market = Tienda('super_market', 'Calle 70', '1234567', 'super_market@hotmail.com',
+                      'Pablo market')
+
 super_market.agregarInventario(productos, 100)
 super_market.verInventario()
 
@@ -155,7 +158,7 @@ print(exists)
 
 print()
 print('Se crea un nuevo producto a consultar existencia')
-Producto4 = Producto('Martillo', 25000, 'Ferreteria', 64)
+Producto4 = Producto('Martillo', 25000, 'Ferreteria', 64, 'Ferros')
 Persona1.agregarCarro(Producto4)
 exists = super_market.consultarExistencia(Persona1.getCarro())
 print(exists)
