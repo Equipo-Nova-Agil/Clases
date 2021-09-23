@@ -10,9 +10,11 @@ from Carro import Carro
 # Cada persona tendrá un Carro
 class Persona:
 
-    def __init__(self, nombre, genero, edad, telefono, direccion, ID, ):
+    def __init__(self, nombre, genero, correo, tipoUsuario, edad, telefono, direccion, ID ):
         self.nombre = nombre
         self.genero = genero
+        self.correo = correo
+        self.tipoUsuario = tipoUsuario
         self.edad = edad
         self.telefono = telefono
         self.direccion = direccion
@@ -34,6 +36,18 @@ class Persona:
 
     def setGenero(self, n):
         self.genero = n
+
+    def getCorreo(self):
+        return self.correo
+
+    def setCorreo(self, n):
+        self.correo = n
+
+    def getTipoU(self):
+        return self.tipoUsuario
+
+    def setTipoU(self, n):
+        self.tipoUsuario = n
 
     def getEdad(self):
         return self.edad

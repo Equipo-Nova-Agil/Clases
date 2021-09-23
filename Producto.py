@@ -9,11 +9,12 @@ class Producto:
 # Atributos
 #########################################################################
 
-    def __init__(self, nombre, precio, seccion, ID):
+    def __init__(self, nombre, precio, seccion, ID, ID_tienda):
         self.nombre = nombre
         self.precio = precio
         self.seccion = seccion
         self.ID = ID
+        self.ID_tienda = ID_tienda
 
 #########################################################################
 # Getters y Setters
@@ -37,9 +38,15 @@ class Producto:
     def setSeccion(self, n):
         self.seccion = n
 
-
     def getID(self):
         return self.ID
 
     def setID(self, n):
         self.ID = n
+
+
+    def getIDTienda(self):
+        return self.ID_tienda
+
+    def setIDTienda(self, n):
+        self.ID_tienda = n
