@@ -7,75 +7,55 @@
 from django.contrib import admin
 from django.db import models as md
 
-class modeloPersona(models.Model):
-    first_name = md.CharField(max_length=30)
-    last_name = md.CharField(max_length=30)
+class modeloEstado(md.Model):
+    id_estado = md.IntegerField(serialize=True, primary_key=True)
+    estado = md.CharField(max_length=30)
 
-    self.nombre = nombre
-    self.genero = genero
-    self.correo = correo
-    self.tipoUsuario = tipoUsuario
-    self.edad = edad
-    self.telefono = telefono
-    self.direccion = direccion
-    self.ID = ID
-    self.carro = Carro([], [])
+class modeloRol(md.Model):
+    id_rol = md.IntegerField(serialize=True, primary_key=True)
+    rol_usuario = md.CharField(max_length=20)
 
-class modeloProducto(md.Model):
 
-    self.nombre = nombre
-    self.precio = precio
-    self.seccion = seccion
-    self.ID = ID
-    self.ID_tienda = ID_tienda
+class modeloUsuario(md.Model):
+    id_usuarios = md.IntegerField(serialize=True, primary_key=True)
+    nombre = md.CharField(max_length=45)
+    apellido = md.CharField(max_length=45)
+    edad = md.IntegerField(null=True)
+    genero = md.CharField(max_length=1)
+    correo = md.CharField(max_length=100, unique=True)
+    telefono = md.CharField(max_length=20)
+    fecha_registro = md.DateField()
+    tipo = md.CharField(max_length=45)
+    direccion = md.CharField(max_length=100)
+    password = md.CharField(max_length=45)
+    id_rol = md.OneToOneField(modeloRol,
+                              on_delete= md.CASCADE)
+    id_estado = md.OneToOneField(modeloEstado,
+                                 on_delete= md.CASCADE)
 
 class modeloTienda(md.Model):
-    self.nombre = nombre
-    self.direccion = direccion
-    self.telefono = telefono
-    self.correo = correo
-    self.responsable = responsable
-    self.inventario = Carro([], [])
-    self.caja = caja
-    self.nomina = nomina
+    id_tienda = md.IntegerField(serialize=True, primary_key=True)
+    nombre = md.CharField(max_length=45, unique=True)
+    direccion = md.CharField(max_length=100)
+    correo = md.CharField(max_length=100, unique=True)
+    telefono = md.CharField(max_length=20)
+    responsable = md.CharField(max_length=45)
+    password = md.CharField(max_length=45)
+
+
+class modeloProducto(md.Model):
+    id_producto = md.IntegerField(serialize=True, primary_key=True)
+    id_tienda = md.ForeignKey(modeloTienda, on_delete=md.CASCADE)
+    nombre = md.CharField(max_length=45)
+    precio = md.FloatField()
+    seccion = md.CharField(max_length=45)
+
 
 class modeloVenta(md.Model):
-
-# de muchos a uno se usa md.ForeingKey
-
-class Manufacturer(models.Model):
-    # ...
-    pass
-
-class Car(models.Model):
-    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
-    # ...
-
-# de muchos a muchos
-
-class Topping(models.Model):
-    # ...
-    pass
-class Pizza(models.Model):
-    # ...
-    toppings = models.ManyToManyField(Topping)
-
-# ejemplo manytomany con varias tablas
-class Person(models.Model):
-    name = models.CharField(max_length=128)
-
-    def __str__(self):
-        return self.name
-class Group(models.Model):
-    name = models.CharField(max_length=128)
-    members = models.ManyToManyField(Person, through='Membership')
-    def __str__(self):
-        return self.name
-class Membership(models.Model):
-    person = models.ForeignKey(Person, on_delete=models.CASCADE)
-    group = models.ForeignKey(Group, on_delete=models.CASCADE)
-    date_joined = models.DateField()
-    invite_reason = models.CharField(max_length=64)
+    id_venta = md.IntegerField(serialize=True, primary_key=True)
+    id_usuario = md.ForeignKey(modeloUsuario, on_delete=md.CASCADE)
+    id_producto = md.ForeignKey(modeloProducto, on_delete=md.CASCADE)
+    cantidad = md.IntegerField()
+    precio = md.FloatField()
 
 
-# Relaciones uno a uno OnetoOneField
