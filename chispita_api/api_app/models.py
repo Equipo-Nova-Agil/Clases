@@ -5,13 +5,16 @@
 # python manage.py startapp api_app
 # python manage.py makemigrations
 # python manage.py migrate
+# python manage.py runserver
 
-# from django.contrib import admin
+from django.contrib import admin
 from django.db import models as md
+
 
 class modeloEstado(md.Model):
     id_estado = md.IntegerField(serialize=True, primary_key=True)
     estado = md.CharField(max_length=30)
+
 
 class modeloRol(md.Model):
     id_rol = md.IntegerField(serialize=True, primary_key=True)
@@ -30,9 +33,9 @@ class modeloUsuario(md.Model):
     tipo = md.CharField(max_length=45)
     direccion = md.CharField(max_length=100)
     password = md.CharField(max_length=45)
-    id_rol = md.OneToOneField(modeloRol,
+    id_rol = md.ForeignKey(modeloRol,
                               on_delete= md.CASCADE)
-    id_estado = md.OneToOneField(modeloEstado,
+    id_estado = md.ForeignKey(modeloEstado,
                                  on_delete= md.CASCADE)
 
 class modeloTienda(md.Model):

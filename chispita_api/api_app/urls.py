@@ -5,3 +5,4 @@ urlpatterns = [
     path('api_app/', viewUsuario.as_view()),
 ]
 
+
