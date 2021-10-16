@@ -8,9 +8,10 @@ from django.shortcuts import render
 
 from django.views import View
 from django.http import JsonResponse
+from rest_framework import viewsets
 import json
-from .models import modeloUsuario as M
-
+from .models import modeloUsuario, modeloRol, modeloVenta, modeloTienda, modeloEstado, modeloProducto
+from .serializers import usuarioSerializers, rolSerializer, estadoSerializer, tiendaSerializer, productoSerializer, ventasSerializer
 
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -68,4 +69,33 @@ class viewUsuario(View):
 
 
 
-# Create your views here.
+# Viewsets
+
+
+class usuarioViewSet(viewsets.ModelViewSet):
+   queryset = modeloUsuario.objects.all()
+   serializer_class = usuarioSerializers
+
+
+class rolViewSet(viewsets.ModelViewSet):
+   queryset = modeloRol.objects.all()
+   serializer_class = rolSerializer
+
+
+class estadoViewSet(viewsets.ModelViewSet):
+   queryset = modeloEstado.objects.all()
+   serializer_class = estadoSerializer
+
+class productoViewSet(viewsets.ModelViewSet):
+   queryset = modeloProducto.objects.all()
+   serializer_class = productoSerializer
+
+class tiendaViewSet(viewsets.ModelViewSet):
+   queryset = modeloTienda.objects.all()
+   serializer_class = tiendaSerializer
+
+class ventasViewSet(viewsets.ModelViewSet):
+   queryset = modeloVenta.objects.all()
+   serializer_class = ventasSerializer
+
+
