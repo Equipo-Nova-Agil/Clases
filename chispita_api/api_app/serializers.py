@@ -2,13 +2,13 @@ from rest_framework import serializers
 
 from .models import modeloUsuario, modeloRol, modeloVenta, modeloEstado, modeloTienda, modeloProducto
 
+
 class usuarioSerializers(serializers.ModelSerializer):
    class Meta:
        model = modeloUsuario
        fields = ('id_usuarios', 'nombre', 'apellido', 'edad',
                  'genero', 'correo', 'telefono', 'fecha_registro',
-                 'tipo', 'direccion', 'password', 'id_rol', 'id_estado',
-                 '')
+                 'tipo', 'direccion', 'password', 'id_rol', 'id_estado')
 
 
 class rolSerializer(serializers.ModelSerializer):

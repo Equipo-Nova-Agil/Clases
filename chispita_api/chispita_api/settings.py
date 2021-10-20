@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'rest_api_framework',
     'api_app'
 ]
 
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'chispita_api.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [r'D:\Ciclo_3\Clases\chispita_api\api_app'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

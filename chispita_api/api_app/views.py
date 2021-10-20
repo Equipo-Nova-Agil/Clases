@@ -56,7 +56,7 @@ class viewUsuario(View):
             'id_estado' : id_estado,
         }
 
-        user = M.modeloUsuario.objects.create(**datos_usuario)
+        user = modeloUsuario.objects.create(**datos_usuario)
 
         data = {
             "message": f"{user.nombre} {user.apellido} ha sido agregado como nuevo usuario"
